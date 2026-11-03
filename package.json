@@ -1,0 +1,16 @@
+{
+  "name": "ai-sdk-tool-screwtape",
+  "version": "0.1.0",
+  "description": "AI SDK tool that checks an invoice before your agent pays it: duplicates, totals and evidence, with a signed receipt.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "license": "MIT",
+  "homepage": "https://screwtape.ai/docs/",
+  "repository": { "type": "git", "url": "https://github.com/screwtapeai/ai-sdk-tool-screwtape" },
+  "keywords": ["ai-sdk", "ai", "tools", "ai-agents", "agent-payments", "invoice", "duplicate-invoice"],
+  "scripts": { "build": "tsc", "typecheck": "tsc --noEmit" },
+  "peerDependencies": { "ai": ">=5", "zod": ">=3.25" },
+  "devDependencies": { "ai": "^5", "zod": "^3.25", "typescript": "^5.6", "@types/node": "^22" }
+}
