@@ -5,12 +5,37 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "homepage": "https://screwtape.ai/docs/",
-  "repository": { "type": "git", "url": "https://github.com/screwtapeai/ai-sdk-tool-screwtape" },
-  "keywords": ["ai-sdk", "ai", "tools", "ai-agents", "agent-payments", "invoice", "duplicate-invoice"],
-  "scripts": { "build": "tsc", "typecheck": "tsc --noEmit" },
-  "peerDependencies": { "ai": ">=5", "zod": ">=3.25" },
-  "devDependencies": { "ai": "^5", "zod": "^3.25", "typescript": "^5.6", "@types/node": "^22" }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/screwtapeai/ai-sdk-tool-screwtape"
+  },
+  "keywords": [
+    "ai-sdk",
+    "ai",
+    "tools",
+    "ai-agents",
+    "agent-payments",
+    "invoice",
+    "duplicate-invoice"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc && node --test test/spend-check.test.mjs"
+  },
+  "peerDependencies": {
+    "ai": ">=5",
+    "zod": ">=3.25"
+  },
+  "devDependencies": {
+    "ai": "^5",
+    "zod": "^3.25",
+    "typescript": "^5.6",
+    "@types/node": "^22"
+  }
 }

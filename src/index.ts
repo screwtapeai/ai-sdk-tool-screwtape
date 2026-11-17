@@ -31,11 +31,15 @@ export function screwtapeSpendCheck(options: SpendCheckOptions = {}) {
     }),
     execute: async ({ invoice, evidence }) => {
       const apiKey = options.apiKey ?? process.env.SCREWTAPE_API_KEY;
-      if (!apiKey) throw new Error("Set SCREWTAPE_API_KEY (free key: https://screwtape.ai/signup/).");
       const parts = [...invoice.items.map((_, i) => `items.${i}.amount`), "tax"];
+      const headers: Record<string, string> = {
+        "Content-Type": "application/json",
+        "User-Agent": "ai-sdk-tool-screwtape/0.1.0",
+      };
+      if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
       const res = await fetch(`${apiUrl}/v1/duplicate`, {
         method: "POST",
-        headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json", "User-Agent": "ai-sdk-tool-screwtape/0.1.0" },
+        headers,
         body: JSON.stringify({
           task: `Decide whether the agent may pay invoice ${invoice.invoice_id} from ${invoice.vendor}.`,
           agent_output: JSON.stringify(invoice),
