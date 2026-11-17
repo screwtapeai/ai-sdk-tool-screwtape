@@ -4,7 +4,7 @@
 
 ```bash
 npm install ai-sdk-tool-screwtape ai zod
-export SCREWTAPE_API_KEY=...   # free key (10 calls a day): https://screwtape.ai/signup/
+export SCREWTAPE_API_KEY=...   # optional; 3 calls a day with no key, 10 with a free key: https://screwtape.ai/signup/
 ```
 
 ```ts
@@ -21,4 +21,10 @@ const { text } = await generateText({
 ```
 
 The tool returns `{ pay, action, reason, duplicate, receiptId }`.
-Free: 10 calls a day. Sandbox Evaluation Pack: $100 for 2,000 checks. Enterprise pilot: support@screwtape.ai. MIT.
+To check whether a seller is safe to pay before an agent pays, call `POST https://screwtape.ai/v1/payment-check` or connect to the MCP server at `https://screwtape.ai/mcp` (tool `payment_check`):
+
+```bash
+curl -s https://screwtape.ai/v1/payment-check -H 'content-type: application/json' -d '{"seller_url":"https://seller.example/pay","intended_amount":0.005,"agent_id":"agent-001"}'
+```
+
+Free: 3 calls per UTC day with no key, or 10 with a free key from https://screwtape.ai/signup/. Then $0.005 per call (pay-per-call). Sandbox Evaluation Pack: $100 for 2,000 checks. Enterprise pilot: support@screwtape.ai. MIT.
